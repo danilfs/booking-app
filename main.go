@@ -55,11 +55,12 @@ func main() {
 		fmt.Printf("%v tickets remainig for %v. \n", remainingTickets, conferenceName)
 
 		firstNames := []string{}
-		for index, booking := range bookings {
-			strings.Fields(booking)
+		for _, booking := range bookings {
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0])
 		}
 
-		fmt.Printf("These are all our bookings: %v\n", bookings)
+		fmt.Printf("The first names of bookings are: %v\n", firstNames)
 	}
 
 }
