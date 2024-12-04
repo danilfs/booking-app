@@ -41,8 +41,13 @@ func main() {
 
 		// var isValidName bool = len(firstName) >= 2 && len(lastName) >= 2
 		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(email, "@")
+		isValidTicketsNumber := userTickets > 0 && userTickets <= remainingTickets
+		// isValidCity := city == "Singapore" || city == "London"
+		// isInvalidCity := city != "Singapore" || city != "London"
+		// !isValidCity
 
-		if userTickets <= remainingTickets {
+		if isValidName && isValidEmail && isValidTicketsNumber {
 			remainingTickets = remainingTickets - userTickets
 
 			// bookings[0] = firstName + " " + lastName
@@ -74,9 +79,34 @@ func main() {
 				break
 			}
 		} else {
-			fmt.Printf("We have only %v tickets, you can't book %v tickets \n", remainingTickets, userTickets)
+			if !isValidName {
+				fmt.Println("First or second name is too short")
+			}
+			if !isValidEmail {
+				fmt.Println("Doesn't contain @ sign")
+			}
+			if !isValidTicketsNumber {
+				fmt.Println("Number of tickets you entered is invalid")
+
+			}
 
 		}
 
 	}
+
+	// city := "London "
+
+	// switch city {
+	// case "New-York":
+	// 	// code fo booking in NY
+	// case "Singapore", "Hong Kong":
+	// 	// code fo booking in Singapore and HK
+	// case "London", "Berlin":
+	// 	// code fo booking in NY and Berlin
+	// case "Mexico City":
+	// 	// code fo booking in MC
+	// default:
+	// 	fmt.Println("No valid city selected")
+	// }
+
 }
